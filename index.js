@@ -4,7 +4,6 @@ const Shape = require('./lib/shapes.js');
 const Circle = require('./lib/circle.js');
 const Square = require('./lib/square.js');
 const Triangle = require('./lib/triangle.js');
-const { writeHeapSnapshot } = require('v8');
 
 const questions = [
     {
@@ -35,32 +34,31 @@ const questions = [
 ]
 
 function init(){
-    inquirer.prompts(questions)
+    inquirer.prompt(questions)
     .then(function(answers) {
         if(answers.shape === 'circle'){
             const circle = new Circle(answers.shape_color)
-            writeToFile('logo.svg', createSVG(answers.logo_text, answers.text_color, circle.render()))
+            writeToFile('circle-logo.svg', createSVG(answers.logo_text, answers.text_color, circle.render()))
         } else if (answers.shape === 'triangle'){
             const triangle = new Triangle(answers.shape_color)
-            writeToFile('logo.svg', createSVG(answers.logo_text, answers.text_color, triangle.render()))
-        } else if (answer.shape === 'square'){
+            writeToFile('triangle-logo.svg', createSVG(answers.logo_text, answers.text_color, triangle.render()))
+        } else if (answers.shape === 'square'){
             const square = new Square(answers.shape_color)
-            writeToFile('logo.svg', createSVG(answers.logo_text, answers.text_color, square.render()))
+            writeToFile('square-logo.svg', createSVG(answers.logo_text, answers.text_color, square.render()))
         } else {
             console.log("Choose a valid shape.");
         }
     
     });
-}
+};
 
 function createSVG(logo_name, text_color, logo_shape) {
-    return `
-    <svg version="1.1" width="350" height="350" xmlns="http://www.w3.org/2000/svg">
+    return `<svg version="1.1" width="350" height="350" xmlns="http://www.w3.org/2000/svg">
     ${logo_shape}
     <text x="150" y="125" font-size="50" text-anchor="middle" fill="${text_color}">${logo_name}</text>
     </svg>
     `;
-}
+};
 
 function writeToFile(fileName, data) {
     fs.writeFileSync(fileName, data)
