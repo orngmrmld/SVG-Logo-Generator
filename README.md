@@ -51,3 +51,4 @@ Repository contains a high-quality readme with description and a link to a walkt
 https://github.com/orngmrmld/SVG-Logo-Generator
 
 ## Demo 
+<img width="635" alt="Screen Shot 2023-08-19 at 2 42 59 PM" src="https://github.com/orngmrmld/SVG-Logo-Generator/assets/127569177/acb67731-fa88-4f69-a531-d3b741b8fb9f">
